@@ -122,7 +122,7 @@ class File
      * @param string $destination
      * @return void
      */
-    public function checkLogSize(string $destination): void
+    public function checkLogSize(string $destination)
     {
         if( is_file($destination) && floor($this->config['file_size']) <= filesize($destination) ) {
             try {

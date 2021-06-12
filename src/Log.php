@@ -146,7 +146,7 @@ class Log
      *
      * @return void
      */
-    public function info($message, array $context = array())
+    public function info($message, array $context = [])
     {
         return $this->log(__FUNCTION__, $message, $context);
     }
@@ -187,7 +187,7 @@ class Log
      * @param array $context
      * @return void
      */
-    public function record($message, $level = 'info', array $context = array())
+    public function record($message, $level = 'info', array $context = [])
     {
         if( is_string($message) ) {
             $replace = [];
@@ -196,10 +196,10 @@ class Log
                 $replace['{' . $key . '}'] = $val;
             }
 
-            $messages = strtr($message, $replace);
+            $message = strtr($message, $replace);
         }
 
-        $this->messages[$level][] = $messages;
+        $this->messages[$level][] = $message;
 
         return $this;
     }
